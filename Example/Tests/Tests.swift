@@ -4,47 +4,41 @@ import Quick
 import Nimble
 import EventKit
 
-class TableOfContentsSpec: QuickSpec {
+enum LoginEvent: EventType {
+    case Success(Int)
+    case Failure
+}
+
+class Observer {}
+
+class EventKitSpec: QuickSpec {
+
     override func spec() {
-        describe("these will fail") {
+        describe("event") {
+            beforeEach {
 
-            it("can do maths") {
-                expect(1) == 2
             }
 
-            it("can read") {
-                expect("number") == "string"
-            }
-
-            it("will eventually fail") {
-                expect("time").toEventually( equal("done") )
-            }
-            
-            context("these will pass") {
-
-                it("can do maths") {
-                    expect(23) == 23
-                }
-
-                it("can read") {
-                    expect("🐮") == "🐮"
-                }
-
-                it("will eventually pass") {
-                    var time = "passing"
-
-                    dispatch_async(dispatch_get_main_queue()) {
-                        time = "done"
-                    }
-
-                    waitUntil { done in
-                        NSThread.sleepForTimeInterval(0.5)
-                        expect(time) == "done"
-
-                        done()
+            it("is observed") {
+                var result = 0
+                var observer: Observer? = Observer()
+                EventKit.addObserver(observer!) { (event: LoginEvent) in
+                    switch event {
+                    case .Success(let i):
+                        result += i
+                    case .Failure:
+                        break
                     }
                 }
+
+                EventKit.post(LoginEvent.Success(1))
+
+                expect(result) == 1
+            }
+
+            it("isn't observed if observer is deinited") {
             }
         }
     }
+
 }
