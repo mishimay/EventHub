@@ -1,15 +1,56 @@
 # EventKit
 
-[![CI Status](http://img.shields.io/travis/Yuki Mishima/EventKit.svg?style=flat)](https://travis-ci.org/Yuki Mishima/EventKit)
-[![Version](https://img.shields.io/cocoapods/v/EventKit.svg?style=flat)](http://cocoapods.org/pods/EventKit)
-[![License](https://img.shields.io/cocoapods/l/EventKit.svg?style=flat)](http://cocoapods.org/pods/EventKit)
-[![Platform](https://img.shields.io/cocoapods/p/EventKit.svg?style=flat)](http://cocoapods.org/pods/EventKit)
+Type-safe and handy observation system in Swift.
+
+## Quick Example
+```swift
+struct MessageEvent: EventType {
+    let message: String
+}
+
+EventKit.addObserver(self) { (event: MessageEvent) in
+    print(event.message) // -> 😜
+}
+EventKit.post(MessageEvent(message: "😜"))
+```
 
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+1. **Define events which adopt `EventType` protocol**  
+  The event can be a class, structure, or enumeration.
+
+  ```swift
+  enum LoginEvent: EventType {
+      case Success(id: String)
+      case Failure(error: ErrorType)
+  }
+  ```
+
+1. **Add observers and blocks**  
+  Call `addObserver(observer:thread:block:)`.  
+  -  `observer`: An observer object. If the observer object is destroyed, the observation will be removed automatically and the block will never be called.
+  -  `thread`: Optional (default is nil). It determines that which thread executes the block. If it's nil, the block is run synchronously on the posting thread.
+  -  `block`: A callback closure. The block receives the defined event.
+
+  ```swift
+  EventKit.addObserver(self, thread: .Main) { (event: LoginEvent) in
+      switch event {
+      case .Success(let id):
+          print(id)
+      case .Failure(let error):
+          print(error)
+      }
+  }
+  ```
+
+1. **Post events**  
+  ```swift
+  EventKit.post(LoginEvent.Success(id: id))
+  ```
 
 ## Requirements
+
+Swift 2.1
 
 ## Installation
 
