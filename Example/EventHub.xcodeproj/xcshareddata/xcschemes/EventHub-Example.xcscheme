@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "EventKit_Example.app"
-               BlueprintName = "EventKit_Example"
-               ReferencedContainer = "container:EventKit.xcodeproj">
+               BuildableName = "EventHub_Example.app"
+               BlueprintName = "EventHub_Example"
+               ReferencedContainer = "container:EventHub.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "EventKit_Tests.xctest"
-               BlueprintName = "EventKit_Tests"
-               ReferencedContainer = "container:EventKit.xcodeproj">
+               BuildableName = "EventHub_Tests.xctest"
+               BlueprintName = "EventHub_Tests"
+               ReferencedContainer = "container:EventHub.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "EventKit_Tests.xctest"
-               BlueprintName = "EventKit_Tests"
-               ReferencedContainer = "container:EventKit.xcodeproj">
+               BuildableName = "EventHub_Tests.xctest"
+               BlueprintName = "EventHub_Tests"
+               ReferencedContainer = "container:EventHub.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "EventKit_Example.app"
-            BlueprintName = "EventKit_Example"
-            ReferencedContainer = "container:EventKit.xcodeproj">
+            BuildableName = "EventHub_Example.app"
+            BlueprintName = "EventHub_Example"
+            ReferencedContainer = "container:EventHub.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "EventKit_Example.app"
-            BlueprintName = "EventKit_Example"
-            ReferencedContainer = "container:EventKit.xcodeproj">
+            BuildableName = "EventHub_Example.app"
+            BlueprintName = "EventHub_Example"
+            ReferencedContainer = "container:EventHub.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -99,9 +99,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "EventKit_Example.app"
-            BlueprintName = "EventKit_Example"
-            ReferencedContainer = "container:EventKit.xcodeproj">
+            BuildableName = "EventHub_Example.app"
+            BlueprintName = "EventHub_Example"
+            ReferencedContainer = "container:EventHub.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

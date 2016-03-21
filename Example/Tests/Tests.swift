@@ -2,7 +2,7 @@
 
 import Quick
 import Nimble
-import EventKit
+import EventHub
 
 enum LoginEvent: EventType {
     case Success(Int)
@@ -11,7 +11,7 @@ enum LoginEvent: EventType {
 
 class Observer {}
 
-class EventKitSpec: QuickSpec {
+class EventHubSpec: QuickSpec {
     override func spec() {
 
         describe("event") {
@@ -23,7 +23,7 @@ class EventKitSpec: QuickSpec {
                     result = 0
                     observer = Observer()
 
-                    EventKit.addObserver(observer!) { (event: LoginEvent) in
+                    EventHub.addObserver(observer!) { (event: LoginEvent) in
                         switch event {
                         case .Success(let i):
                             result = result + i
@@ -34,25 +34,25 @@ class EventKitSpec: QuickSpec {
                 }
                 afterEach {
                     if let observer = observer {
-                        EventKit.removeObserver(observer)
+                        EventHub.removeObserver(observer)
                     }
                 }
 
                 it("is observed") {
-                    EventKit.post(LoginEvent.Success(1))
+                    EventHub.post(LoginEvent.Success(1))
                     expect(result) == 1
                 }
 
                 it("is observed multiple times") {
-                    EventKit.post(LoginEvent.Success(1))
-                    EventKit.post(LoginEvent.Success(2))
-                    EventKit.post(LoginEvent.Success(3))
+                    EventHub.post(LoginEvent.Success(1))
+                    EventHub.post(LoginEvent.Success(2))
+                    EventHub.post(LoginEvent.Success(3))
                     expect(result) == 6
                 }
                 
                 it("isn't observed if observer is deinited") {
                     observer = nil
-                    EventKit.post(LoginEvent.Success(1))
+                    EventHub.post(LoginEvent.Success(1))
                     expect(result) == 0
                 }
             }
@@ -62,7 +62,7 @@ class EventKitSpec: QuickSpec {
                     result = 0
                     observer = Observer()
 
-                    EventKit.addObserver(observer!, thread: .Main) { (event: LoginEvent) in
+                    EventHub.addObserver(observer!, thread: .Main) { (event: LoginEvent) in
                         expect(NSThread.isMainThread()) == true
 
                         switch event {
@@ -75,12 +75,12 @@ class EventKitSpec: QuickSpec {
                 }
                 afterEach {
                     if let observer = observer {
-                        EventKit.removeObserver(observer)
+                        EventHub.removeObserver(observer)
                     }
                 }
 
                 it("is observed") {
-                    EventKit.post(LoginEvent.Success(1))
+                    EventHub.post(LoginEvent.Success(1))
                     expect(result).toEventually(equal(1))
                 }
             }
@@ -90,7 +90,7 @@ class EventKitSpec: QuickSpec {
                     result = 0
                     observer = Observer()
 
-                    EventKit.addObserver(observer!, thread: .Background(queue: nil)) { (event: LoginEvent) in
+                    EventHub.addObserver(observer!, thread: .Background(queue: nil)) { (event: LoginEvent) in
                         expect(NSThread.isMainThread()) == false
 
                         switch event {
@@ -103,12 +103,12 @@ class EventKitSpec: QuickSpec {
                 }
                 afterEach {
                     if let observer = observer {
-                        EventKit.removeObserver(observer)
+                        EventHub.removeObserver(observer)
                     }
                 }
 
                 it("is observed") {
-                    EventKit.post(LoginEvent.Success(1))
+                    EventHub.post(LoginEvent.Success(1))
                     expect(result).toEventually(equal(1))
                 }
             }

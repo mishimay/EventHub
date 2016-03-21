@@ -1,4 +1,4 @@
-# EventKit
+# EventHub
 
 Type-safe and handy observation system in Swift.
 
@@ -8,10 +8,10 @@ struct MessageEvent: EventType {
     let message: String
 }
 
-EventKit.addObserver(self) { (event: MessageEvent) in
+EventHub.addObserver(self) { (event: MessageEvent) in
     print(event.message) // -> 😜
 }
-EventKit.post(MessageEvent(message: "😜"))
+EventHub.post(MessageEvent(message: "😜"))
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ EventKit.post(MessageEvent(message: "😜"))
   -  `block`: A callback closure. The block receives the defined event.
 
   ```swift
-  EventKit.addObserver(self, thread: .Main) { (event: LoginEvent) in
+  EventHub.addObserver(self, thread: .Main) { (event: LoginEvent) in
       switch event {
       case .Success(let id):
           print(id)
@@ -45,7 +45,7 @@ EventKit.post(MessageEvent(message: "😜"))
 
 1. **Post events**  
   ```swift
-  EventKit.post(LoginEvent.Success(id: id))
+  EventHub.post(LoginEvent.Success(id: id))
   ```
 
 ## Requirements
@@ -54,11 +54,11 @@ Swift 2.1
 
 ## Installation
 
-EventKit is available through [CocoaPods](http://cocoapods.org). To install
+EventHub is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "EventKit"
+pod "EventHub"
 ```
 
 ## Author
@@ -67,4 +67,4 @@ Yuki Mishima, mishimaybe@gmail.com
 
 ## License
 
-EventKit is available under the MIT license. See the LICENSE file for more info.
+EventHub is available under the MIT license. See the LICENSE file for more info.

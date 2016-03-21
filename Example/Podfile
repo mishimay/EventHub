@@ -2,8 +2,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 
-target 'EventKit_Tests', :exclusive => true do
-  pod 'EventKit', :path => '../'
+target 'EventHub_Tests', :exclusive => true do
+  pod 'EventHub', :path => '../'
 
   pod 'Quick', '~> 0.8.0'
   pod 'Nimble', '3.0.0'

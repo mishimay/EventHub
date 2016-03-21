@@ -1,5 +1,5 @@
 #
-# Be sure to run `pod lib lint EventKit.podspec' to ensure this is a
+# Be sure to run `pod lib lint EventHub.podspec' to ensure this is a
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
@@ -7,9 +7,9 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "EventKit"
+  s.name             = "EventHub"
   s.version          = "1.0"
-  s.summary          = "Type-safe and handy observation system in Swift."
+  s.summary          = "Type-safe and handy observation system in Swift. It's like NSNotificationCenter or EventBus(Android)."
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -19,11 +19,11 @@ Pod::Spec.new do |s|
 #  s.description      = <<-DESC
 #                       DESC
 
-  s.homepage         = "https://github.com/mishimay/EventKit"
+  s.homepage         = "https://github.com/mishimay/EventHub"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Yuki Mishima" => "mishimaybe@gmail.com" }
-  s.source           = { :git => "https://github.com/mishimay/EventKit.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/mishimay/EventHub.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '8.0'
@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Pod/Classes/**/*'
   s.resource_bundles = {
-    'EventKit' => ['Pod/Assets/*.png']
+    'EventHub' => ['Pod/Assets/*.png']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

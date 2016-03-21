@@ -1,19 +1,19 @@
 PODS:
-  - EventKit (0.1.0)
+  - EventHub (0.1.0)
   - Nimble (3.0.0)
   - Quick (0.8.0)
 
 DEPENDENCIES:
-  - EventKit (from `../`)
+  - EventHub (from `../`)
   - Nimble (= 3.0.0)
   - Quick (~> 0.8.0)
 
 EXTERNAL SOURCES:
-  EventKit:
+  EventHub:
     :path: ../
 
 SPEC CHECKSUMS:
-  EventKit: 30e1018d2d6ec4b3c1eb17aab35b5bc904c99a5c
+  EventHub: 5bfcb7f2d2e836617d300d472bd47471fa77f35e
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
   Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
 

@@ -14,7 +14,7 @@ public enum Thread {
     }
 }
 
-public struct EventKit {
+public struct EventHub {
 
     private struct Observation {
         weak var observer: AnyObject?
