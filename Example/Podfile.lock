@@ -1,5 +1,5 @@
 PODS:
-  - EventHub (1.0)
+  - EventHub (1.1)
   - Nimble (3.2.0)
   - Quick (0.9.1)
 
@@ -10,10 +10,10 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   EventHub:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
-  EventHub: 7f8a5baf14091e67446c3d77c07acb706faae45f
+  EventHub: 475ed9d64885d8e3223089dc19953fe3fec4910d
   Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
   Quick: a5221fc21788b6aeda934805e68b061839bc3165
 

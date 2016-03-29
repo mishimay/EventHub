@@ -14,7 +14,7 @@ class Observer {}
 class EventHubSpec: QuickSpec {
     override func spec() {
 
-        describe("event") {
+        describe("an event") {
             var result: Int!
             var observer: Observer?
 
@@ -110,6 +110,36 @@ class EventHubSpec: QuickSpec {
                 it("is observed") {
                     EventHub.post(LoginEvent.Success(1))
                     expect(result).toEventually(equal(1))
+                }
+            }
+
+            context("when it is posted with other events at the same time") {
+                beforeEach {
+                    result = 0
+                    observer = Observer()
+
+                    EventHub.addObserver(observer!, thread: .Main) { (event: LoginEvent) in
+                        switch event {
+                        case .Success(let i):
+                            result = result + i
+                        case .Failure:
+                            break
+                        }
+                    }
+                }
+                afterEach {
+                    if let observer = observer {
+                        EventHub.removeObserver(observer)
+                    }
+                }
+
+                it("is observed without any crash") {
+                    (0..<10000).forEach { _ in
+                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                            EventHub.post(LoginEvent.Success(1))
+                        }
+                    }
+                    expect(result).toEventually(equal(10000), timeout: 5, pollInterval: 0.1)
                 }
             }
         }
