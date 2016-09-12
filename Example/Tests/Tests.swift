@@ -62,8 +62,8 @@ class EventHubSpec: QuickSpec {
                     result = 0
                     observer = Observer()
 
-                    EventHub.addObserver(observer!, thread: .Main) { (event: LoginEvent) in
-                        expect(NSThread.isMainThread()) == true
+                    EventHub.addObserver(observer!, thread: .main) { (event: LoginEvent) in
+                        expect(Thread.isMainThread) == true
 
                         switch event {
                         case .Success(let i):
@@ -90,8 +90,8 @@ class EventHubSpec: QuickSpec {
                     result = 0
                     observer = Observer()
 
-                    EventHub.addObserver(observer!, thread: .Background(queue: nil)) { (event: LoginEvent) in
-                        expect(NSThread.isMainThread()) == false
+                    EventHub.addObserver(observer!, thread: .background(queue: nil)) { (event: LoginEvent) in
+                        expect(Thread.isMainThread) == false
 
                         switch event {
                         case .Success(let i):
@@ -118,7 +118,7 @@ class EventHubSpec: QuickSpec {
                     result = 0
                     observer = Observer()
 
-                    EventHub.addObserver(observer!, thread: .Main) { (event: LoginEvent) in
+                    EventHub.addObserver(observer!, thread: .main) { (event: LoginEvent) in
                         switch event {
                         case .Success(let i):
                             result = result + i
@@ -135,7 +135,7 @@ class EventHubSpec: QuickSpec {
 
                 it("is observed without any crash") {
                     (0..<10000).forEach { _ in
-                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                        DispatchQueue.global().async {
                             EventHub.post(LoginEvent.Success(1))
                         }
                     }

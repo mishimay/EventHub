@@ -21,8 +21,8 @@ EventHub.post(MessageEvent(message: "😜"))
 
   ```swift
   enum LoginEvent: EventType {
-      case Success(id: String)
-      case Failure(error: ErrorType)
+      case success(id: String)
+      case failure(error: ErrorType)
   }
   ```
 
@@ -35,9 +35,9 @@ EventHub.post(MessageEvent(message: "😜"))
   ```swift
   EventHub.addObserver(self, thread: .Main) { (event: LoginEvent) in
       switch event {
-      case .Success(let id):
+      case .success(let id):
           print(id)
-      case .Failure(let error):
+      case .failure(let error):
           print(error)
       }
   }
@@ -45,12 +45,12 @@ EventHub.post(MessageEvent(message: "😜"))
 
 1. **Post events**  
   ```swift
-  EventHub.post(LoginEvent.Success(id: id))
+  EventHub.post(LoginEvent.success(id: id))
   ```
 
 ## Requirements
 
-Swift 2.1
+Swift 3.0
 
 ## Installation
 
