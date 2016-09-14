@@ -9,7 +9,7 @@ public enum Thread {
         case .main:
             return .main
         case .background(let queue):
-            return queue ?? .global(priority: .default)
+            return queue ?? .global()
         }
     }
 }
