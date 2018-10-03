@@ -24,7 +24,7 @@ public struct EventHub {
     private static var observations = [Observation]()
     private static let lock: AnyObject = UUID().uuidString as AnyObject
 
-    public static func addObserver<T: EventType>(_ observer: AnyObject, thread: Thread? = nil, block: (T) -> ()) {
+    public static func addObserver<T: EventType>(_ observer: AnyObject, thread: Thread? = nil, block: @escaping (T) -> ()) {
         sync {
             observations.append(Observation(observer: observer, thread: thread, block: block))
         }
